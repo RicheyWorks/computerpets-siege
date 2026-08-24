@@ -8,7 +8,7 @@ Implement against this file, not folklore.
 - Repo: `computerpets-siege`
 - Idea: Desktop Pet Siege
 - Genre: Tower defense overlay
-- Engine: C# / WinForms (or WPF)
+- Engine: C# / WinForms (or WPF) for the real hwnd. Web canvas prototype in `web/` until then.
 - Surface: `desktop overlay`
 
 ## Loop
@@ -17,10 +17,12 @@ The flagship pet is already a living sticker on Windows. Siege is the combat ski
 
 ## Play beats
 
-- Start from desktop.ps1 extra flag or siege.exe.
-- Place up to 3 owned pets as towers on screen edges.
-- Creeps are abstract (paperclips, popups), not horror.
+- Start from desktop.ps1 extra flag or siege.exe (overlay). Web: `web/npm run dev`.
+- Place up to 3 owned pets as towers on screen edges. Rui is pre-seated on the taskbar.
+- Creeps are abstract (paperclips, popups, ads), not horror.
 - Defeat = overlay hides 30s, then walks back. No permadeath.
+- Dojo: 8 trains/pet/day. Overcap is steam. Stats persist.
+- After 3 campaign waves, Horde DNA (daily seed) or walk it off.
 
 ## Neighbors
 
