@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-label="Siege">
+  <rect width="16" height="16" rx="3" fill="#2a4538"/>
+  <circle cx="4.5" cy="3.8" r="2.3" fill="#1c1712"/>
+  <circle cx="11.5" cy="3.8" r="2.3" fill="#1c1712"/>
+  <circle cx="8" cy="7" r="5.1" fill="#c45c3e"/>
+  <ellipse cx="8" cy="8.1" rx="3.7" ry="3.1" fill="#f3ead7"/>
+  <circle cx="6.15" cy="7.25" r="1.05" fill="#1c1712"/>
+  <circle cx="9.85" cy="7.25" r="1.05" fill="#1c1712"/>
+  <ellipse cx="8" cy="9.35" rx="0.85" ry="0.6" fill="#1c1712"/>
+  <rect x="0" y="13" width="16" height="3" fill="#1c1712"/>
+  <rect x="1" y="13.55" width="3.4" height="1.9" rx="0.35" fill="#d4a017"/>
+  <rect x="12" y="10.7" width="2.2" height="3.8" rx="1.1" fill="#f3ead7"/>
+</svg>

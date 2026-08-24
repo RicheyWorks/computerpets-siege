@@ -4,3 +4,12 @@ obj/
 *.user
 .env
 .DS_Store
+node_modules/
+.vercel/
+.tanstack/
+dist/
+*.local
+web/.env
+web/node_modules/
+web/.vercel/
+web/.tanstack/
