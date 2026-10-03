@@ -89,7 +89,7 @@ Then open the printed local URL. Reduce-motion is the wave icon in the HUD.
 
 ## Environment
 
-- Node 22+ for `web/`
+- Node 22.12+ for `web/`
 - .NET 8 SDK for `overlay/` later
 
 ## Failure doctrine
