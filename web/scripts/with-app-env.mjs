@@ -111,7 +111,13 @@ function main(argv) {
     process.exit(2);
   }
   const env = mergeAppEnv(readAppEnv(projectRoot()), process.env);
-  const child = spawn(command, args, { stdio: "inherit", env });
+  // npm's Windows Vite shim is a .cmd file, which spawn cannot execute directly.
+  // Use Node for the installed CLI; preserve literal arguments without a shell.
+  const executable = command === "vite" ? process.execPath : command;
+  const childArgs = command === "vite"
+    ? [join(projectRoot(), "node_modules", "vite", "bin", "vite.js"), ...args]
+    : args;
+  const child = spawn(executable, childArgs, { stdio: "inherit", env });
   // The dev server is long-running and is stopped by signalling this wrapper.
   for (const signal of ["SIGINT", "SIGTERM", "SIGHUP"]) {
     process.on(signal, () => child.kill(signal));

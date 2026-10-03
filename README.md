@@ -1,8 +1,12 @@
 # Siege
 
-**Desktop Pet Siege** — Tower defense on the desktop edge. Pets defend the screen from creeping bits.
+**A small tower-defense battle at the edge of your screen.**
+
+Seat Rui, Paint, and Reed, train between waves, then choose a daily endless challenge. Siege currently plays in the browser; the native Windows overlay is a future implementation.
 
 Part of [ComputerPets](https://github.com/RicheyWorks/computerpets). Map: [computerpets-ecosystem](https://github.com/RicheyWorks/computerpets-ecosystem).
+
+[Play the prototype](#run-web-prototype) · [Current features](#whats-in-this-slice) · [Design](docs/DESIGN.md) · [Native overlay status](#windows-overlay-status)
 
 | | |
 | --- | --- |
@@ -13,7 +17,7 @@ Part of [ComputerPets](https://github.com/RicheyWorks/computerpets). Map: [compu
 
 ## The loop
 
-The flagship pet is already a living sticker on Windows. Siege is the combat skin of that sticker: creeps climb the taskbar, Rui swats them. Close Siege, the pet still walks.
+The browser prototype puts creeps along a simulated desktop edge. The target Windows game would run beside the flagship pet in a separate process, so closing the game would leave the pet walking.
 
 ## Who plays
 
@@ -39,6 +43,8 @@ Not a horror game. Creeps are paperclips and popups. Not the Electron pet proces
 
 ## Architecture
 
+The browser's local simulation is in [web/src/game/sim.ts](web/src/game/sim.ts), with daily wave logic in [horde.ts](web/src/game/horde.ts). Named companion services and the native overlay below describe intended wiring.
+
 ```mermaid
 flowchart LR
   webProto[web prototype] -->|loop| siege
@@ -60,33 +66,30 @@ flowchart LR
 
 Shipped in `web/`:
 
-**Always-on-top wave, Rui as one tower, 3 waves, defeat hides 30s then walk resumes.** Plus Dojo ranks and Horde DNA.
+**Browser canvas, Rui as one tower, 3 waves, defeat hides 30s then walk resumes.** Plus Dojo ranks and Horde DNA.
 
-You know it works when: Siege crash leaves the pet walking. Multi-monitor: focused screen only. Reduce-motion flag.
+The prototype includes a reduce-motion setting. Always-on-top windows, focused-monitor behavior, and isolation from the real desktop pet are acceptance targets for the native overlay.
 
 ## Run (web prototype)
 
-Node 22+.
+Node 22.12+, npm, and access to this private repository. From a fresh checkout:
 
 ```powershell
-Set-Location C:\Users\730ri\projects\computerpets-siege\web
-npm install
+git clone https://github.com/RicheyWorks/computerpets-siege.git
+Set-Location .\computerpets-siege\web
+npm ci
 npm run dev
 ```
 
 Then open the printed local URL. Reduce-motion is the wave icon in the HUD.
 
-## Run (Windows overlay — stub)
+## Windows overlay status
 
-```powershell
-dotnet build overlay; dotnet run --project overlay
-```
-
-`.NET 8` when `overlay/` grows a csproj. The stub does not replace the Electron pet.
+[overlay/Program.cs](overlay/Program.cs) is an empty entry point. There is no project file to build or run yet. The planned .NET 8 overlay and desktop integration are described in [docs/DESIGN.md](docs/DESIGN.md); they are separate from the web prototype.
 
 ## Environment
 
-- Node 22+ for `web/`
+- Node 22.12+ for `web/`
 - .NET 8 SDK for `overlay/` later
 
 ## Failure doctrine
